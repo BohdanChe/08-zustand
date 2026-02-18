@@ -2,13 +2,34 @@ import { getNotes } from "@/lib/api";
 import { Metadata } from "next";
 import NotesClient from "./Notes.client";
 
-export const metadata: Metadata = {
-  title: "Notes Page",
-};
-
 type Props = {
   params: Promise<{ slug: string[] }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const tag = slug[0] === "all" ? "all" : slug[0];
+  const tagDisplay = tag.charAt(0).toUpperCase() + tag.slice(1);
+
+  return {
+    title: `${tagDisplay} Notes | Note Hub`,
+    description: `View all ${tag} notes in your Note Hub collection.`,
+    openGraph: {
+      title: `${tagDisplay} Notes | Note Hub`,
+      description: `View all ${tag} notes in your Note Hub collection.`,
+      url: `https://notehub.example.com/notes/filter/${tag}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Note Hub",
+        },
+      ],
+    },
+  };
+}
+
 export default async function NotesPage({ params }: Props) {
   const { slug } = await params;
 
