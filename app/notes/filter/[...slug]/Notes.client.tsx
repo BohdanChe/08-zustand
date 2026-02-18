@@ -6,23 +6,17 @@ import css from "./page.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { useDebouncedCallback } from "use-debounce";
 
-import { getNotes, NotesResponse } from "@/lib/api";
+import { getNotes } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 import EmptyState from "@/components/EmptyState/EmptyState";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchBox from "@/components/SearchBox/SearchBox";
 
 interface NotesClientProps {
-  initialData: NotesResponse;
-  initialTag?: string;
+  tag?: string;
 }
 
-export default function NotesClient({
-  initialData,
-  initialTag,
-}: NotesClientProps) {
-  const { notes, totalPages } = initialData;
-
+export default function NotesClient({ tag }: NotesClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [page, setPage] = useState(1);
@@ -38,9 +32,8 @@ export default function NotesClient({
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["notes", searchQuery, page, initialTag],
-    queryFn: () => getNotes(searchQuery, page, initialTag),
-    initialData: { notes, totalPages },
+    queryKey: ["notes", searchQuery, page, tag],
+    queryFn: () => getNotes(searchQuery, page, tag),
     placeholderData: (oldData) => oldData,
   });
 
