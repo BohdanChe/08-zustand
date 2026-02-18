@@ -24,6 +24,7 @@ export default function NoteForm({ formAction }: Props) {
     const { name, value } = e.target;
 
     setDraft({
+      ...draft,
       [name]: value,
     });
   };
