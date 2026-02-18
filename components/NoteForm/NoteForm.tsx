@@ -4,7 +4,7 @@
 
 import css from "./NoteForm.module.css";
 import { useRouter } from "next/navigation";
-import { useNoteStore } from "@/lib /store/noteStore";
+import { useNoteStore } from "@/lib/store/noteStore";
 
 
 type Props = {

@@ -1,8 +1,8 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { addNote } from '@/lib /api';
-import { NewNote, NOTE_TAGS, type NoteTag } from '@/types /note';
+import { addNote } from '@/lib/api';
+import { NewNote, NOTE_TAGS, type NoteTag } from '@/types/note';
 
 export async function createNoteAction(formData: FormData) {
   const title = formData.get('title')?.toString() || '';

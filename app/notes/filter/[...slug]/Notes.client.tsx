@@ -6,11 +6,11 @@ import css from "./page.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { useDebouncedCallback } from "use-debounce";
 
-import { getNotes, NotesResponse } from "@/lib /api";
-import NoteList from "@/components /NoteList/NoteList";
-import EmptyState from "@/components /EmptyState/EmptyState";
-import Pagination from "@/components /Pagination/Pagination";
-import SearchBox from "@/components /SearchBox/SearchBox";
+import { getNotes, NotesResponse } from "@/lib/api";
+import NoteList from "@/components/NoteList/NoteList";
+import EmptyState from "@/components/EmptyState/EmptyState";
+import Pagination from "@/components/Pagination/Pagination";
+import SearchBox from "@/components/SearchBox/SearchBox";
 
 interface NotesClientProps {
   initialData: NotesResponse;

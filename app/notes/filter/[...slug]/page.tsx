@@ -1,4 +1,4 @@
-import { getNotes } from "@/lib /api";
+import { getNotes } from "@/lib/api";
 import { Metadata } from "next";
 import NotesClient from "./Notes.client";
 
